@@ -44,6 +44,10 @@
     <appender-ref ref="FILE2" />
   </logger>
 
+  <logger name="plus" level="DEBUG">
+    <appender-ref ref="FILE2" />
+  </logger>
+
   <root level="WARN">
     <appender-ref ref="ASYNCFILE" />
     <appender-ref ref="ASYNCSTDOUT" />
