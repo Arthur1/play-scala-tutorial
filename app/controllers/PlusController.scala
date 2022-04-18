@@ -1,12 +1,14 @@
 package controllers
 
 import javax.inject._
+import play.api.i18n._
 import play.api.mvc._
 
 @Singleton
-class PlusController @Inject() (cc: ControllerComponents) extends AbstractController(cc) {
+class PlusController @Inject() (mcc: MessagesControllerComponents) extends MessagesAbstractController(mcc) {
   def get(a: Option[Int], b: Option[Int]) =
-    Action { implicit request: Request[AnyContent] =>
+    Action { implicit request: MessagesRequest[AnyContent] =>
+      val messages: Messages = request.messages
       Ok {
         a.map { a =>
           b.map { b =>
@@ -14,7 +16,7 @@ class PlusController @Inject() (cc: ControllerComponents) extends AbstractContro
           }
         }.flatten
           .map(_.toString)
-          .getOrElse("Please give arguments of a and b.")
+          .getOrElse(Messages("plus.notEnoughArguments"))
       }
     }
 }

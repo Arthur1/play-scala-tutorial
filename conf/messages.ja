@@ -2,3 +2,5 @@
 
 hello = {0}さん、こんにちは！
 noQuery = 名前をnameというクエリパラメータで与えてください
+
+plus.notEnoughArguments = 引数をaとbというクエリパラメータで与えてください

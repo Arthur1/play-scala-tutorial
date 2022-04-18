@@ -2,3 +2,5 @@
 
 hello = Hello, {0}!
 noQuery = Please give a name as a query parameter named "name".
+
+plus.notEnoughArguments = Please give arguments of a and b.

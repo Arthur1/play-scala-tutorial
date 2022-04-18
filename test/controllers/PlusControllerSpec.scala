@@ -6,7 +6,7 @@ import play.api.test.Helpers._
 
 class PlusControllerSpec extends PlaySpec {
 
-  def controller = new PlusController(stubControllerComponents())
+  def controller = new PlusController(stubMessagesControllerComponents())
 
   "get" should {
     "クエリーパラメータがある場合は「3」というレスポンスを返す" in {

@@ -6,7 +6,7 @@ import play.api.test.Helpers._
 
 class HelloControllerSpec extends PlaySpec {
 
-  def controller = new HelloController(stubControllerComponents())
+  def controller = new HelloController(stubMessagesControllerComponents())
 
   "get" should {
     "クエリーパラメータがある場合は「Hello, namae!」というレスポンスを返す" in {
