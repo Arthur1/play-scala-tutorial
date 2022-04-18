@@ -1,1 +1,4 @@
 # https://www.playframework.com/documentation/latest/ScalaI18N
+
+hello = Hello, {0}!
+noQuery = Please give a name as a query parameter named "name".
