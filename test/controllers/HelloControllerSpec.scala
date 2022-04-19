@@ -11,15 +11,17 @@ class HelloControllerSpec extends PlaySpec {
   "get" should {
     "クエリーパラメータがある場合は「Hello, namae!」というレスポンスを返す" in {
       val name = "namae"
-      val result = controller.get(Some(name))(FakeRequest())
+      val result = controller.get(Some(name))(stubMessagesRequest())
       assert(status(result) === 200)
-      assert(contentAsString(result) === s"Hello, $name!")
+      // TODO: Messagesはmockしない
+      assert(contentAsString(result) === s"hello")
     }
 
     """クエリーパラメータがない場合は「Please give a name as a query parameter named "name".」というレスポンスを返す""" in {
-      val result = controller.get(None)(FakeRequest())
+      val result = controller.get(None)(stubMessagesRequest())
       assert(status(result) === 200)
-      assert(contentAsString(result) === """Please give a name as a query parameter named "name".""")
+      // TODO: Messagesはmockしない
+      assert(contentAsString(result) === "noQuery")
     }
   }
 }
