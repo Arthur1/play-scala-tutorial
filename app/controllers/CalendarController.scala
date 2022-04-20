@@ -9,8 +9,13 @@ import play.api.data.Forms._
 
 @Singleton
 class CalendarController @Inject() (mcc: MessagesControllerComponents) extends MessagesAbstractController(mcc) {
-  def get = Action { implicit request =>
+  def getIndex = Action { implicit request =>
     val messages: Messages = request.messages
     Ok(views.html.calendar.index())
+  }
+
+  def getAdd = Action { implicit request =>
+    val messages: Messages = request.messages
+    Ok(views.html.calendar.add())
   }
 }

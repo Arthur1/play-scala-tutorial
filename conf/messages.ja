@@ -12,6 +12,8 @@ textboard.message = メッセージ
 textboard.send = 送信
 
 calendar.title = 予定表
+calendar.index.title = ホーム
+calendar.add.title = 予定追加
 
 error.minLength = メッセージを入力してください
 error.maxLength = メッセージが長すぎます
