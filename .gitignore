@@ -18,3 +18,5 @@ server.pid
 .metals/
 .bloop/
 .DS_Store
+project/metals.sbt
+
