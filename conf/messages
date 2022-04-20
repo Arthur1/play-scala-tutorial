@@ -23,4 +23,4 @@ error.minLength = Please enter a message.
 error.maxLength = The message is too long.
 error.localDateTime = Please enter a datetime.
 
-format.localDateTime = DateTime
+# format.localDateTime = DateTime

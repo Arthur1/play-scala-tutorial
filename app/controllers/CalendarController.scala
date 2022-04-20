@@ -1,7 +1,7 @@
 package controllers
 
-import java.time.OffsetDateTime
 import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter.ISO_LOCAL_DATE_TIME
 import javax.inject._
 import play.api.i18n._
 import play.api.mvc._
@@ -15,8 +15,8 @@ class CalendarController @Inject() (mcc: MessagesControllerComponents) extends M
   private val form = Form(
     mapping(
       "title" -> nonEmptyText(maxLength = 30),
-      "startsAt" -> localDateTime,
-      "endsAt" -> localDateTime
+      "startsAt" -> localDateTime("yyyy-MM-dd'T'HH:mm"),
+      "endsAt" -> localDateTime("yyyy-MM-dd'T'HH:mm")
     )(CreateScheduleRequest.apply)(CreateScheduleRequest.unapply)
   )
 
@@ -34,10 +34,12 @@ class CalendarController @Inject() (mcc: MessagesControllerComponents) extends M
     form
       .bindFromRequest()
       .fold(
-        error => BadRequest(views.html.calendar.add(error)),
+        error => {
+          BadRequest(views.html.calendar.add(error))
+        },
         postRequest => {
-          // val post = Post(postRequest.body, OffsetDateTime.now)
-          // PostRepository.add(post)
+          val schedule = Schedule(postRequest.title, postRequest.startsAt, postRequest.endsAt)
+          ScheduleRepository.add(schedule)
           Redirect(routes.CalendarController.getIndex())
         }
       )

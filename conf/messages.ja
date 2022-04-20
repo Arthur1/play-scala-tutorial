@@ -23,7 +23,7 @@ error.minLength = {0}文字以上で入力してください
 error.maxLength = {0}文字以下で入力してください
 error.localDateTime = 正しいフォーマットで日時を入力してください
 
-format.localDateTime = 日時
+# format.localDateTime = 日時
 
 constraint.required=必須
 constraint.min=最小値: {0}

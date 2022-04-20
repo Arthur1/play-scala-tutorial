@@ -1,5 +1,5 @@
 package controllers
 
-import java.time.OffsetDateTime
+import java.time.LocalDateTime
 
-case class Schedule(title: String, startsAt: OffsetDateTime, endsAt: OffsetDateTime)
+case class Schedule(title: String, startsAt: LocalDateTime, endsAt: LocalDateTime)
