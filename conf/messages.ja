@@ -14,6 +14,19 @@ textboard.send = 送信
 calendar.title = 予定表
 calendar.index.title = ホーム
 calendar.add.title = 予定追加
+calendar.schedule.title = 予定の名前
+calendar.schedule.startsAt = 予定の開始日時
+calendar.schedule.endsAt = 予定の終了日時
+calendar.schedule.create = 予定を作成する
 
-error.minLength = メッセージを入力してください
-error.maxLength = メッセージが長すぎます
+error.minLength = {0}文字以上で入力してください
+error.maxLength = {0}文字以下で入力してください
+error.localDateTime = 正しいフォーマットで日時を入力してください
+
+format.localDateTime = 日時
+
+constraint.required=必須
+constraint.min=最小値: {0}
+constraint.max=最大値: {0}
+constraint.minLength=最小の長さ: {0}
+constraint.maxLength=最大の長さ: {0}

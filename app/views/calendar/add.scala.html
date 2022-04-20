@@ -1,9 +1,23 @@
 @import helper._
 
-@()(implicit messages: MessagesProvider, request: MessagesRequestHeader)
+@(form: Form[CreateScheduleRequest])(implicit messages: MessagesProvider, request: MessagesRequestHeader)
+@implicitFieldConstructor = @{ FieldConstructor(calendar.input.render) } 
 
 @calendar.layout(Messages("calendar.add.title")) {
   <div class="container mt-4">
-    add
+    <h1 class="mt-4">@Messages("calendar.add.title")</h1>
+    @helper.form(routes.CalendarController.postAdd, Symbol("class") -> "mt-4") {
+      @helper.input(form("title"), '_label -> Messages("calendar.schedule.title")) { (id, name, value, args) =>
+        <input type="text" id="@id" name="@name" class="form-control" />
+      }
+      @helper.input(form("startsAt"), '_label -> Messages("calendar.schedule.startsAt")) { (id, name, value, args) =>
+        <input type="datetime-local" id="@id" name="@name" class="form-control" />
+      }
+      @helper.input(form("endsAt"), '_label -> Messages("calendar.schedule.endsAt")) { (id, name, value, args) =>
+        <input type="datetime-local" id="@id" name="@(name)" class="form-control" />
+      }
+      @CSRF.formField
+      <button type="submit" class="btn btn-primary">@Messages("calendar.schedule.create")</button>
+    }
   </div>
 }

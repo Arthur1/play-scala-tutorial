@@ -12,6 +12,15 @@ textboard.message = Message
 textboard.send = Send
 
 calendar.title = Calendar
+calendar.index.title = Home
+calendar.add.title = Create a Schedule
+calendar.schedule.title = Schedule Title
+calendar.schedule.startsAt = Start Datetime
+calendar.schedule.endsAt = End Datetime
+calendar.schedule.create = Create
 
 error.minLength = Please enter a message.
 error.maxLength = The message is too long.
+error.localDateTime = Please enter a datetime.
+
+format.localDateTime = DateTime

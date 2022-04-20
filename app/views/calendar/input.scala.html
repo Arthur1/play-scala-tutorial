@@ -1,0 +1,14 @@
+@(elements: helper.FieldElements)
+
+<div class="@if(elements.hasErrors) {} mb-3 row">
+  <label for="@elements.id" class="col-sm-2 col-form-label">@elements.label</label>
+  <div class="col-sm-10">
+    @elements.input
+    @if(elements.hasErrors) {
+      <div class="invalid-feedback" style="display: block;">
+        @elements.errors.mkString(", ")
+      </div>
+    }
+    <div class="form-text">@elements.infos.mkString(", ")</div>
+  </div>
+</div>
