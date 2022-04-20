@@ -4,3 +4,12 @@ hello = Hello, {0}!
 noQuery = Please give a name as a query parameter named "name".
 
 plus.notEnoughArguments = Please give arguments of a and b.
+
+textboard.title = Textboard
+textboard.dateTime = Date
+textboard.dateFormat = EEE, dd MMM yyyy HH:mm:ss
+textboard.message = Message
+textboard.send = Send
+
+error.minLength = Please enter a message.
+error.maxLength = The message is too long.
