@@ -11,5 +11,7 @@ textboard.dateFormat = yyyy年MM月dd日 HH:mm:ss
 textboard.message = メッセージ
 textboard.send = 送信
 
+calendar.title = 予定表
+
 error.minLength = メッセージを入力してください
 error.maxLength = メッセージが長すぎます

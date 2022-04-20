@@ -11,5 +11,7 @@ textboard.dateFormat = EEE, dd MMM yyyy HH:mm:ss
 textboard.message = Message
 textboard.send = Send
 
+calendar.title = Calendar
+
 error.minLength = Please enter a message.
 error.maxLength = The message is too long.
