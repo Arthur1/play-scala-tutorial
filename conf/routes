@@ -11,7 +11,7 @@ GET     /plus                       controllers.PlusController.get(a: Option[Int
 GET     /textboard                  controllers.TextboardController.get()
 POST    /textboard                  controllers.TextboardController.post()
 
-GET     /calendar                   controllers.CalendarController.getIndex()
+GET     /calendar                   controllers.CalendarController.getIndex(date: Option[String])
 GET     /calendar/add               controllers.CalendarController.getAdd()
 POST    /calendar/add               controllers.CalendarController.postAdd()
 

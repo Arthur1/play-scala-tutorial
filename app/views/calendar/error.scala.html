@@ -1,0 +1,12 @@
+@import helper._
+
+@(errorMessage: String)(implicit messages: MessagesProvider, request: MessagesRequestHeader)
+
+@calendar.layout(Messages("calendar.error")) {
+  <div class="container mt-4">
+    <h1 class="mt-4 text-danger">@Messages("calendar.error")</h1>
+    <p>
+      @errorMessage
+    </p>
+  </div>
+}

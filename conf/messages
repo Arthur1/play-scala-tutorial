@@ -18,6 +18,8 @@ calendar.schedule.title = Title
 calendar.schedule.startsAt = Start Datetime
 calendar.schedule.endsAt = End Datetime
 calendar.schedule.create = Create
+calendar.error = Error
+calendar.error.parseDate = Please set the parameter date correctly.
 
 error.minLength = Please enter a message.
 error.maxLength = The message is too long.

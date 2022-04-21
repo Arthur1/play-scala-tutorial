@@ -1,6 +1,8 @@
 package controllers
 
+import scala.util.{Try, Success, Failure}
 import java.time.{LocalDate, LocalDateTime}
+import java.time.format.DateTimeParseException
 import javax.inject._
 import play.api.i18n._
 import play.api.mvc._
@@ -27,11 +29,20 @@ class CalendarController @Inject() (mcc: MessagesControllerComponents) extends M
     )
   )
 
-  def getIndex = Action { implicit request =>
+  def getIndex(date: Option[String]) = Action { implicit request =>
     val messages: Messages = request.messages
-    val localDate = LocalDate.now
-    val schedules = ScheduleRepository.findOfDate(localDate)
-    Ok(views.html.calendar.index(schedules, localDate))
+    val localDateTry: Try[LocalDate] = Try {
+      date.map(LocalDate.parse(_)).getOrElse(LocalDate.now)
+    }
+    localDateTry match {
+      case Success(localDate) => {
+        val schedules = ScheduleRepository.findOfDate(localDate)
+        Ok(views.html.calendar.index(schedules, localDate))
+      }
+      case Failure(exception) => {
+        BadRequest(views.html.calendar.error(Messages("calendar.error.parseDate")))
+      }
+    }
   }
 
   def getAdd = Action { implicit request =>
@@ -49,7 +60,7 @@ class CalendarController @Inject() (mcc: MessagesControllerComponents) extends M
         postRequest => {
           val schedule = Schedule(postRequest.title, postRequest.startsAt, postRequest.endsAt)
           ScheduleRepository.add(schedule)
-          Redirect(routes.CalendarController.getIndex())
+          Redirect(routes.CalendarController.getIndex(None))
         }
       )
   }

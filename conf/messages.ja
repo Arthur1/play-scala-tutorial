@@ -18,6 +18,8 @@ calendar.schedule.title = 予定名
 calendar.schedule.startsAt = 開始日時
 calendar.schedule.endsAt = 終了日時
 calendar.schedule.create = 予定を作成する
+calendar.error = エラー
+calendar.error.parseDate = 正しいフォーマットで日付をセットしてください
 
 error.minLength = {0}文字以上で入力してください
 error.maxLength = {0}文字以下で入力してください
