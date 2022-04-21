@@ -29,7 +29,8 @@ class CalendarController @Inject() (mcc: MessagesControllerComponents) extends M
 
   def getIndex = Action { implicit request =>
     val messages: Messages = request.messages
-    Ok(views.html.calendar.index())
+    val schedules = ScheduleRepository.findAll
+    Ok(views.html.calendar.index(schedules))
   }
 
   def getAdd = Action { implicit request =>

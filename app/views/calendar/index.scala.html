@@ -1,9 +1,27 @@
 @import helper._
 
-@()(implicit messages: MessagesProvider, request: MessagesRequestHeader)
+@(schedules: Seq[Schedule])(implicit messages: MessagesProvider, request: MessagesRequestHeader)
 
 @calendar.layout(Messages("calendar.index.title")) {
   <div class="container mt-4">
-    index
+    <h1 class="mt-4">予定一覧</h1>
+    <table class="table mt-4">
+      <thead>
+        <tr>
+          <th scope="col">@Messages("calendar.schedule.title")</th>
+          <th scope="col">@Messages("calendar.schedule.startsAt")</th>
+          <th scope="col">@Messages("calendar.schedule.endsAt")</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for(schedule <- schedules) {
+          <tr>
+            <th scope="row">@schedule.title</th>
+            <td>@schedule.startsAt.toString</td>
+            <td>@schedule.endsAt.toString</td>
+          </tr>
+        }
+      </tbody>
+    </table>
   </div>
 }
