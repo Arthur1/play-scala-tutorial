@@ -1,7 +1,6 @@
 package controllers
 
 import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter.ISO_LOCAL_DATE_TIME
 import javax.inject._
 import play.api.i18n._
 import play.api.mvc._
@@ -12,12 +11,20 @@ case class CreateScheduleRequest(title: String, startsAt: LocalDateTime, endsAt:
 
 @Singleton
 class CalendarController @Inject() (mcc: MessagesControllerComponents) extends MessagesAbstractController(mcc) {
+  def validateIsAfter(title: String, startsAt: LocalDateTime, endsAt: LocalDateTime) = {
+    if (endsAt.isAfter(startsAt)) Some(CreateScheduleRequest(title, startsAt, endsAt))
+    else None
+  }
+
   private val form = Form(
     mapping(
       "title" -> nonEmptyText(maxLength = 30),
       "startsAt" -> localDateTime("yyyy-MM-dd'T'HH:mm"),
       "endsAt" -> localDateTime("yyyy-MM-dd'T'HH:mm")
-    )(CreateScheduleRequest.apply)(CreateScheduleRequest.unapply)
+    )(CreateScheduleRequest.apply)(CreateScheduleRequest.unapply).verifying(
+      "error.afterDateTime",
+      request => validateIsAfter(request.title, request.startsAt, request.endsAt).isDefined
+    )
   )
 
   def getIndex = Action { implicit request =>

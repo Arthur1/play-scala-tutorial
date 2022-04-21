@@ -22,8 +22,9 @@ calendar.schedule.create = 予定を作成する
 error.minLength = {0}文字以上で入力してください
 error.maxLength = {0}文字以下で入力してください
 error.localDateTime = 正しいフォーマットで日時を入力してください
+error.afterDateTime = 終了日時は開始日時以降に設定してください
 
-# format.localDateTime = 日時
+format.localDateTime = 日時
 
 constraint.required=必須
 constraint.min=最小値: {0}

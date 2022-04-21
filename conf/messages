@@ -22,5 +22,6 @@ calendar.schedule.create = Create
 error.minLength = Please enter a message.
 error.maxLength = The message is too long.
 error.localDateTime = Please enter a datetime.
+error.afterDateTime = End Datetime must be after Start Datetime.
 
-# format.localDateTime = DateTime
+format.localDateTime = DateTime

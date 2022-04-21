@@ -6,6 +6,9 @@
 @calendar.layout(Messages("calendar.add.title")) {
   <div class="container mt-4">
     <h1 class="mt-4">@Messages("calendar.add.title")</h1>
+    @for(error <- form.globalErrors){
+      <p class="text-danger">@Messages(error.message)</p>
+    }
     @helper.form(routes.CalendarController.postAdd, Symbol("class") -> "mt-4") {
       @helper.input(form("title"), '_label -> Messages("calendar.schedule.title")) { (id, name, value, args) =>
         <input type="text" id="@id" name="@name" class="form-control" />
