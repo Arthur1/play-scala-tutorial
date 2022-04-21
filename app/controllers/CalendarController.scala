@@ -1,6 +1,6 @@
 package controllers
 
-import java.time.LocalDateTime
+import java.time.{LocalDate, LocalDateTime}
 import javax.inject._
 import play.api.i18n._
 import play.api.mvc._
@@ -29,8 +29,9 @@ class CalendarController @Inject() (mcc: MessagesControllerComponents) extends M
 
   def getIndex = Action { implicit request =>
     val messages: Messages = request.messages
-    val schedules = ScheduleRepository.findAll
-    Ok(views.html.calendar.index(schedules))
+    val localDate = LocalDate.now
+    val schedules = ScheduleRepository.findOfDate(localDate)
+    Ok(views.html.calendar.index(schedules, localDate))
   }
 
   def getAdd = Action { implicit request =>
