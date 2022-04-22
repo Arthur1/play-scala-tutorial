@@ -29,7 +29,7 @@ class PostsController @Inject() (mcc: MessagesControllerComponents) extends Mess
       .fold(
         error => {
           val errorMessage = Messages(error.errors("post")(0).message)
-          BadRequest(Json.toJson(Response(Meta(400)), Some(errorMessage)))
+          BadRequest(Json.toJson(Response(Meta(400, Some(errorMessage)))))
         },
         postRequest => {
           val post = Post(postRequest.body, OffsetDateTime.now)
