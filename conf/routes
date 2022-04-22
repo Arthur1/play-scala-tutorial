@@ -18,5 +18,8 @@ POST    /calendar/add               controllers.CalendarController.postAdd()
 GET     /api/posts                  controllers.PostsController.get()
 POST    /api/posts                  controllers.PostsController.post()
 
+GET     /api/schedules              controllers.SchedulesController.getList(date: Option[String])
+POST    /api/schedules              controllers.SchedulesController.create()
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
