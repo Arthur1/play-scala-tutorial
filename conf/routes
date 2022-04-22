@@ -15,5 +15,8 @@ GET     /calendar                   controllers.CalendarController.getIndex(date
 GET     /calendar/add               controllers.CalendarController.getAdd()
 POST    /calendar/add               controllers.CalendarController.postAdd()
 
+GET     /api/posts                  controllers.PostsController.get()
+POST    /api/posts                  controllers.PostsController.post()
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
