@@ -18,6 +18,11 @@ class TextboardSpec extends PlaySpec with GuiceOneServerPerTest with OneBrowserP
     driver
   }
 
+  override def fakeApplication() =
+    new GuiceApplicationBuilder()
+      .configure("db.default.driver" -> "org.h2.Driver", "db.default.url" -> "jdbc:h2:mem:test;MODE=MYSQL")
+      .build()
+
   "GET /" should {
     "何も投稿しない場合はメッセージを表示しない" in {
       go to s"http://localhost:$port/textboard"
