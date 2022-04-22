@@ -7,14 +7,14 @@ import play.api.mvc._
 import play.api.data.Form
 import play.api.data.Forms._
 
-case class PostRequest(body: String)
+case class TextBoardPostRequest(body: String)
 
 @Singleton
 class TextboardController @Inject() (mcc: MessagesControllerComponents) extends MessagesAbstractController(mcc) {
   private val form = Form(
     mapping(
       "post" -> text(minLength = 1, maxLength = 10)
-    )(PostRequest.apply)(PostRequest.unapply)
+    )(TextBoardPostRequest.apply)(TextBoardPostRequest.unapply)
   )
 
   def get = Action { implicit request: MessagesRequest[AnyContent] =>
