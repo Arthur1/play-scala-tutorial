@@ -51,18 +51,22 @@ class SchedulesController @Inject() (mcc: MessagesControllerComponents) extends 
     }
   }
 
-  def create = Action { implicit request =>
-    form
-      .bindFromRequest()
+  def create = Action(parse.json) { implicit request =>
+    request.body
+      .validate[Schedule]
       .fold(
-        error => {
-          val errorMessage = Messages(error.errors(0).message)
-          BadRequest(Json.toJson(Response(Meta(400, Some(errorMessage)))))
+        errors => {
+          // TODO: エラーメッセージをstringで取得
+          val message = "json validate error"
+          BadRequest(Json.toJson(Response(Meta(400, Some(message)))))
         },
-        postRequest => {
-          val schedule = Schedule(postRequest.title, postRequest.startsAt, postRequest.endsAt)
-          ScheduleRepository.add(schedule)
-          Ok(Json.toJson(Response(Meta(200))))
+        schedule => {
+          if (schedule.endsAt.isAfter(schedule.startsAt)) {
+            ScheduleRepository.add(schedule)
+            Ok(Json.toJson(Response(Meta(200))))
+          } else {
+            BadRequest(Json.toJson(Response(Meta(400, Some(Messages("error.afterDateTime"))))))
+          }
         }
       )
   }
